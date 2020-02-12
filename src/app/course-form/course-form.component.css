@@ -1,0 +1,19 @@
+.field-heading{
+    font-weight: bold;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+.field-body{
+    width: 30%;
+    margin-left: 1%;
+}
+
+.create-Course{
+    margin-top: 1%;
+    margin-left: 1%; 
+}
+
+.required{
+    border-color: red;
+}

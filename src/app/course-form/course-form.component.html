@@ -1,0 +1,38 @@
+<form #courseForm="ngForm">
+    <div class="field-heading">
+        <label>Course Name</label>
+    </div>
+    <div class="field-body">
+        <input type="text" class="form-control"
+                [class.required]="courseName.touched && !courseName.valid"
+                [(ngModel)]="courseFormData.courseName"
+                name="courseName"
+                #courseName="ngModel"
+                minlength="5"
+                required/>
+        <div class="alert alert-danger" *ngIf="courseName.touched && !courseName.valid"> 
+            <div *ngIf="courseName.errors.required">Course Name is required</div>
+            <div *ngIf="courseName.errors.minlength">Name should be atleast {{courseName.errors.minlength.requiredLength}} characters. </div>
+        </div>
+    </div>
+    <div class="field-heading">
+        <label>Category</label>
+    </div>
+    <div class="field-body">
+        <select class="form-control"
+                [(ngModel)]="courseFormData.categoryId"
+                name="courseCategory"
+                (click)="logData(courseCategory)"
+                #courseCategory
+                required>
+                <div class="alert alert-danger" *ngIf="courseName.touched && !courseName.valid">
+                    <div *ngIf="courseCategory.errors.required">Category is required</div>
+                </div>
+            <option value="0">Select</option>
+            <option value="{{ctgry.id}}" *ngFor="let ctgry of courseFormData.categoryList">{{ctgry.value}}</option>
+        </select>
+    </div>
+    <input class="btn btn-success create-Course" type="button" value="Create"/>
+
+    {{courseForm.value|json}}
+</form>
